@@ -1,0 +1,70 @@
+---
+
+- name: Clone repository locally
+  become: false
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local_destination }}"
+  
+- name: Check if all the dotfiles are links
+  command: "ls -F {{ home_path }}/{{ item }}"
+  register: existing_dotfile_info
+  failed_when: false
+  check_mode: false
+  changed_when: false
+  with_items: "{{ dotfiles }}"
+
+- name: Move to backup for dotfiles file that are not links
+  command: mv {{ home_path }}/{{ dotfiles[item.0] }} {{ home_path }}/{{ dotfiles[item.0] }}.bak
+  when: "'@' not in item.1.stdout and item.1.stdout != ''"
+  with_indexed_items: "{{ existing_dotfile_info.results }}"
+
+- name: Link dotfiles into home folder
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+    dest: "{{ home_path }}/{{ item }}"
+    state: link
+  become: false
+  with_items: "{{ dotfiles }}"
+
+- name: Configure shared font directories
+  become: yes
+  file:
+    path: '/usr/local/share/fonts/{{ item.type }}/{{ item.dest | dirname }}'
+    state: 'directory'
+    group: 'root'
+    owner: 'root'
+    mode: '0755'
+  with_items: '{{ fonts_shared }}'
+
+- name: Configure shared fonts
+  become: yes
+  copy:
+    src: '{{ item.src }}'
+    dest: '/usr/local/share/fonts/{{ item.type }}/{{ item.dest }}'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: 'rebuild fonts cache'
+  with_items: '{{ fonts_shared }}'
+
+- name: Check if Reversal-icon-theme theme exists
+  stat:
+    path: "{{ home_path }}/.local/share/icons/Reversal"
+  register: Reversal_icon_theme_result
+
+- name: Cloning Reversal-icon-theme repository into /tmp
+  git:
+    repo=https://github.com/yeyushengfan258/Reversal-icon-theme.git
+    dest=/tmp/Reversal-icon-theme/
+  when: not Reversal_icon_theme_result.stat.exists
+
+- name: Installing Reversal-icon-theme
+  command: sh /tmp/Reversal-icon-theme/install.sh
+  when: not Reversal_icon_theme_result.stat.exists
+
+- name: Removing Reversal-icon-theme repository
+  ansible.builtin.file:
+    path: /tmp/Reversal-icon-theme/
+    state: absent
+  when: not Reversal_icon_theme_result.stat.exists
