@@ -20,6 +20,8 @@
       - yay
       - zsh
       - docker
+      - dialog
+      - redshift
     state: present
   become: true
 
