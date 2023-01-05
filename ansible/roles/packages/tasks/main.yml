@@ -22,6 +22,10 @@
       - docker
       - dialog
       - redshift
+      - nodejs
+      - npm
+      - texlive-most
+      - texlive-langgreek
     state: present
   become: true
 
@@ -33,6 +37,140 @@
 #    state: absent
 #  become: true
 
+
+################### REDSHIFT ########################
+- name: redshift alias night
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'alias night="redshift -O 3500"'
+    state: present
+
+
+- name: redshift alias day
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'alias day="redshift -x"'
+    state: present
+
+##################### NVIM STUFF #################################
+- name: neovim alias 
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'alias nv="nvim"'
+    state: present
+      
+
+- name: check that config of nvim exists
+  stat:
+    path: ~/.config/nvim
+  register: nvim_config_exists
+
+- name: If exists, make the backup ( for now , just remove)
+  command: rm -r  ~/.config/nvim/ #~/.config/nvim.bak"
+  when: nvim_config_exists.stat.exists
+
+- name: check that local share of nvim exists
+  stat:
+    path: ~/.local/share/nvim
+  register: nvim_share_exists
+
+- name: If exists, move it 
+  command: rm -r ~/.local/share/nvim
+  when: nvim_share_exists.stat.exists
+
+- name: check that local share of nvim exists
+  stat:
+    path: ~/.local/state/nvim
+  register: nvim_state_exists
+
+- name: If exists, move it 
+  command: rm -r ~/.local/state/nvim
+  when: nvim_state_exists.stat.exists
+
+- name: check that local share of nvim exists
+  stat:
+    path: ~/.cache/nvim
+  register: nvim_cache_exists
+
+- name: If exists, move it 
+  command: rm -r ~/.cache/nvim
+  when: nvim_cache_exists.stat.exists
+
+
+- name: Cloning Astronvim
+  git:
+    repo=https://github.com/AstroNvim/AstroNvim
+    dest=~/.config/nvim
+
+########## END NVIM STUFF ########################
+
+
+################ RUST START YEAH ######################
+
+- name: check if cargo is installed
+  shell: command -v cargo
+  register: cargo_exists
+  ignore_errors: yes
+
+- name: Download Installer
+  when: cargo_exists is failed
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/sh.rustup.rs
+    mode: '0755'
+    force: 'yes'
+  tags:
+    - rust
+
+- name: install rust/cargo
+  when: cargo_exists is failed
+  shell: /tmp/sh.rustup.rs -y
+  tags:
+    - rust
+
+- name: source rust
+  lineinfile:
+    dest: ~/.zshrc
+    line: '[ -f ~/.cargo/env ] && source $HOME/.cargo/env'
+    state: present
+############### RUST END YEAH ########################
+
+- name: install broot 
+  command: cargo install --git https://github.com/Canop/broot
+
+- name: install rust diff 
+  command: cargo install --git https://github.com/dandavison/delta
+
+
+- name: Check if git config exists
+  ansible.builtin.stat:
+    path: ~/.gitconfig
+  register: gitconfig_exists
+
+- name: If not, make it
+  command: touch ~/.gitconfig
+  when: not gitconfig_exists
+
+    #- name: Set gitconfig user name and email
+    #  ini_file:
+    #    path: ~/.gitconfig
+    #    section: core
+    #    option: pager
+    #    value: delta
+    #  become: true
+    #
+    #
+    #- name: Add section to gitconfig
+    #  ini_file:
+    #    path: ~/.gitconfig
+    #    block:
+    #      newsection:
+    #        option1: value1
+    #        option2: value2
+    #  become: true
+
+
+############### YAY ##################################
 # Ansible kewlfft.aur required
 # Use : ansible-galaxy collection install kewlfft.aur
 - name: Install AUR needed packages using yay
