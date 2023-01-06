@@ -37,6 +37,19 @@
 #    state: absent
 #  become: true
 
+### Docker ###
+
+- name: Start systemctl docker daemon
+  shell: "systemctl start docker"
+  tags:
+    - docker
+
+- name: Add it to sudo users
+  shell: "sudo groupadd docker && sudo usermod -aG docker $USER"
+  tags:
+    - docker
+
+### Docker ###
 
 ################### REDSHIFT ########################
 - name: redshift alias night
@@ -168,6 +181,27 @@
     #        option1: value1
     #        option2: value2
     #  become: true
+
+
+
+################## HASKELL ############################
+
+- name: Check if Haskell is installed
+  command: ghc --version
+  register: haskell_installed
+  tags: 
+    - haskell
+
+
+- name: Install Haskell Stack
+  shell: "curl -sSL https://get.haskellstack.org/ | sh"
+  when: not haskell_installed
+  tags:
+    - haskell
+
+################## HASKELL ###########################
+
+
 
 
 ############### YAY ##################################
