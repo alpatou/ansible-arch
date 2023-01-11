@@ -19,8 +19,8 @@ RUN git clone https://aur.archlinux.org/yay.git \
 
 
 # Install dependencies
-USER root
-RUN  pacman -Sy --noconfirm ansible python
+
+RUN  sudo pacman -Sy --noconfirm ansible python
 RUN ansible-galaxy collection install kewlfft.aur
 
 # Set the working directory
@@ -29,5 +29,5 @@ WORKDIR /ansible
 # Run the playbook when the container starts
 #CMD ["ansible-playbook", "/ansible/myplaybook.yml"]
 
-#ENTRYPOINT ["sh"]
+#ENTRYPOINT ["sleep"]
 

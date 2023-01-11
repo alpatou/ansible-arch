@@ -26,8 +26,11 @@
       - npm
       - texlive-most
       - texlive-langgreek
+      - fontconfig
     state: present
   become: true
+  tags:
+    - pacman_packages
 
 # Uninstall picom if installed
 #- name: Remove picom if installed 
@@ -199,7 +202,7 @@
   tags:
     - haskell
 
-################## HASKELL ###########################
+################## END HASKELL ###########################
 
 
 
@@ -262,3 +265,105 @@
     name: "{{ ansible_user_id }}"
     shell: /bin/zsh
   become: true
+
+
+#### ZSH THEME ####
+#
+
+
+- name: Create directory if it does not exist
+  file:
+    path: /usr/share/fonts/
+    state: directory
+    owner: root
+    group: root
+    mode: 0750
+  become: true
+  tags: 
+    - notfont
+
+- name: Download font file
+  get_url:
+    url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+    dest: '/tmp/MesloLGS NF Regular.ttf' 
+  tags: 
+    - font
+
+  # name of  file doesnt matter
+- name: Copy font file to system's font directory
+  copy:
+    src: '/tmp/MesloLGS NF Regular.ttf'
+    dest: '/usr/share/fonts/MesloLGS NF Regular.ttf'
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags: 
+    - font
+
+
+- name: Download font file bold
+  get_url:
+    url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+    dest: '/tmp/MesloLGS NF Bold.ttf' 
+  tags: 
+    - font
+
+      # name of  file doesnt matter
+- name: Copy font file to system's font directory bold
+  copy:
+    src: '/tmp/MesloLGS NF Bold.ttf'
+    dest: '/usr/share/fonts/MesloLGS NF Bold.ttf'
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags: 
+    - font
+
+
+- name: Download font file italic
+  get_url:
+    url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+    dest: '/tmp/MesloLGS NF Italic.ttf' 
+  tags: 
+    - font
+
+      # name of  file doesnt matter
+- name: Copy font file to system's font directory Italic
+  copy:
+    src: '/tmp/MesloLGS NF Bold.ttf'
+    dest: '/usr/share/fonts/MesloLGS NF Italic.ttf'
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags: 
+    - font
+
+
+- name: Download font file  bold italic
+  get_url:
+    url: https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+    dest: '/tmp/MesloLGS NF Bold Italic.ttf' 
+  tags: 
+    - font
+
+      # name of  file doesnt matter
+- name: Copy font file to system's font directory  bold Italic
+  copy:
+    src: '/tmp/MesloLGS NF Bold.ttf'
+    dest: '/usr/share/fonts/MesloLGS NF Bold Italic.ttf'
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags: 
+    - font
+
+- name: Update font cache
+  command: fc-cache -fv
+  become: true
+  tags: 
+    - font
+
