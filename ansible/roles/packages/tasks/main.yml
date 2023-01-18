@@ -3,11 +3,13 @@
 # Ansible community.general.pacman required
 # Use : ansible-galaxy collection install community.general
 
-- name: update pacman
-  shell: pacman -Syu
-  become: true
-  tags:
-    - pacman_packages
+- name: Run the equivalent of "pacman -Sy" as a separate step
+  community.general.pacman:
+    update_cache: true
+
+- name: Run the equivalent of "pacman -Su" as a separate step
+  community.general.pacman:
+    upgrade: true
 
 - name: Install needed packages
   community.general.pacman:
@@ -24,7 +26,6 @@
       - python-pywal
       - vim
       - neovim
-      - yay
       - zsh
       - docker
       - dialog
