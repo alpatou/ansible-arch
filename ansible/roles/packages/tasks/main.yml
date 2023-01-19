@@ -61,8 +61,28 @@
     - docker
 
 ### Docker ###
+#
+#
+
+- name: check .zshrc exists
+  stat:
+    path: ~/.zshrc
+  register: zshrc_exists
+  tags:
+    - zsh
+
+- name: create .zshrc if not exists
+  file:
+    path: ~/.zshrc
+    state: touch
+  when: not zshrc_exists.stat.exists
+  tags:
+    - zsh
+
+
 
 ################### REDSHIFT ########################
+
 - name: redshift alias night
   lineinfile:
     dest: ~/.zshrc
@@ -135,20 +155,23 @@
   shell: command -v cargo
   register: cargo_exists
   ignore_errors: yes
+  tags:
+    - rust
 
 - name: Download Installer
-  when: cargo_exists is failed
   get_url:
     url: https://sh.rustup.rs
     dest: /tmp/sh.rustup.rs
     mode: '0755'
     force: 'yes'
+  when: cargo_exists is failed
   tags:
     - rust
+    - rustup
 
 - name: install rust/cargo
-  when: cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
+  when: cargo_exists is failed
   tags:
     - rust
 
@@ -157,14 +180,25 @@
     dest: ~/.zshrc
     line: '[ -f ~/.cargo/env ] && source $HOME/.cargo/env'
     state: present
+  tags:
+    - rust
 ############### RUST END YEAH ########################
 
-- name: install broot 
-  command: cargo install --git https://github.com/Canop/broot
+- name: instal cargo packages
+  community.general.cargo:
+    name:
+      - broot
+      - git-delta
+  tags:
+    - rust
 
-- name: install rust diff 
-  command: cargo install --git https://github.com/dandavison/delta
 
+          #- name: install broot 
+          #  command: cargo install --git https://github.com/Canop/broot
+          #
+          #- name: install rust diff 
+          #  command: cargo install --git https://github.com/dandavison/delta
+          #
 
 - name: Check if git config exists
   ansible.builtin.stat:
@@ -229,50 +263,68 @@
   stat:
     path: ~/.oh-my-zsh
   register: oh_my_zsh_result
+  tags: 
+    - zsh
 
 - name: Cloning oh-my-zsh
   git:
     repo=https://github.com/robbyrussell/oh-my-zsh
     dest=~/.oh-my-zsh
   when: not oh_my_zsh_result.stat.exists
+  tags: 
+    - zsh
 
 - name: Check if zsh-syntax-highlighting plugin exists
   stat:
     path: ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
   register: zsh_syntax_highlighting_result
+  tags: 
+    - zsh
   
 - name: Cloning zsh-syntax-highlighting plugin into oh-my-zsh folder
   git:
     repo=https://github.com/zsh-users/zsh-syntax-highlighting.git
     dest=~/.oh-my-zsh/plugins/zsh-syntax-highlighting
   when: not zsh_syntax_highlighting_result.stat.exists
+  tags: 
+    - zsh
 
 - name: Check if cdimascio-lambda theme exists
   stat:
     path: ~/.oh-my-zsh/themes/cdimascio-lambda.zsh-theme
   register: cdimascio_lambda_result
+  tags: 
+    - zsh
 
 - name: Cloning cdimascio-lambda theme repository into /tmp
   git:
     repo=https://github.com/cdimascio/lambda-zsh-theme.git
     dest=/tmp/cdimascio-lambda/
   when: not cdimascio_lambda_result.stat.exists
+  tags: 
+    - zsh
 
 - name: Move cdimascio-lambda theme to oh-my-zsh themes folder
   command: mv -f /tmp/cdimascio-lambda/cdimascio-lambda.zsh-theme ~/.oh-my-zsh/themes/cdimascio-lambda.zsh-theme
   when: not cdimascio_lambda_result.stat.exists
+  tags: 
+    - zsh
 
 - name: Removing cdimascio-lambda theme repository
   file:
     path: /tmp/cdimascio-lambda/
     state: absent
   when: not cdimascio_lambda_result.stat.exists
+  tags: 
+    - zsh
 
 - name: Change user shell to zsh 
   user:
     name: "{{ ansible_user_id }}"
     shell: /bin/zsh
   become: true
+  tags: 
+    - zsh
 
 
 #### ZSH THEME ####

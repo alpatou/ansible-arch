@@ -15,7 +15,7 @@ run:
 
 # Execute the playbook
 playbook:
-	docker run -it --name victor --rm  --privileged  -v $(PWD):/ansible ansible_docker_test bash -c "ansible-playbook --skip-tags=docker --inventory ansible/hosts --connection=local ansible/main.yml && bash"    #--extra-vars "ansible_become_password=guessit"
+	docker run -it --name victor --rm  --privileged  -v $(PWD):/ansible ansible_docker_test bash -c "ansible-playbook --tags 'rustup' --inventory ansible/hosts --connection=local ansible/main.yml && bash"    #--extra-vars "ansible_become_password=guessit"
 
 
 
