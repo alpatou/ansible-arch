@@ -40,13 +40,6 @@
   tags:
     - pacman_packages
 
-# Uninstall picom if installed
-#- name: Remove picom if installed 
-#  community.general.pacman:
-#    name: 
-#      - picom
-#    state: absent
-#  become: true
 
 ### Docker ###
 
@@ -248,13 +241,14 @@
 - name: Check if Haskell is installed
   command: ghc --version
   register: haskell_installed
+  ignore_errors: yes
   tags: 
     - haskell
 
 
 - name: Install Haskell Stack
   shell: "curl -sSL https://get.haskellstack.org/ | sh"
-  when: not haskell_installed
+  when: haskell_installed is failed
   tags:
     - haskell
 
@@ -263,15 +257,35 @@
 
 
 
-############### YAY ##################################
+############### PARU ##################################
+
 # Ansible kewlfft.aur required
 # Use : ansible-galaxy collection install kewlfft.aur
-- name: Install AUR needed packages using yay
+
+      #- name: Cloning paru
+      #  git:
+      #    repo=https://aur.archlinux.org/paru.git
+      #    dest=/home/paru
+      #  tags: 
+      #    - paru
+      #  
+      #- name: install paru
+      #  shell: "cd /home/paru && makepkg -si"
+      #  become: true
+      #  tags: 
+      #    - paru
+      #
+      
+- name: Install AUR needed packages using paru
   kewlfft.aur.aur:
-    use: yay
+    use: paru
     name:
-      - picom-ibhagwan-git
-  become: false
+      - visual-studio-code-bin
+  tags:
+    - paru
+
+############### PARU ##################################
+
 
 - name: Check if .oh-my-zsh exists
   stat:
