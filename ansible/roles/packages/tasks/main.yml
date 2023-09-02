@@ -89,58 +89,6 @@
     line: 'alias day="redshift -x"'
     state: present
 
-##################### NVIM STUFF #################################
-- name: neovim alias 
-  lineinfile:
-    dest: ~/.zshrc
-    line: 'alias nv="nvim"'
-    state: present
-      
-
-- name: check that config of nvim exists
-  stat:
-    path: ~/.config/nvim
-  register: nvim_config_exists
-
-- name: If exists, make the backup ( for now , just remove)
-  command: rm -r  ~/.config/nvim/ #~/.config/nvim.bak"
-  when: nvim_config_exists.stat.exists
-
-- name: check that local share of nvim exists
-  stat:
-    path: ~/.local/share/nvim
-  register: nvim_share_exists
-
-- name: If exists, move it 
-  command: rm -r ~/.local/share/nvim
-  when: nvim_share_exists.stat.exists
-
-- name: check that local share of nvim exists
-  stat:
-    path: ~/.local/state/nvim
-  register: nvim_state_exists
-
-- name: If exists, move it 
-  command: rm -r ~/.local/state/nvim
-  when: nvim_state_exists.stat.exists
-
-- name: check that local share of nvim exists
-  stat:
-    path: ~/.cache/nvim
-  register: nvim_cache_exists
-
-- name: If exists, move it 
-  command: rm -r ~/.cache/nvim
-  when: nvim_cache_exists.stat.exists
-
-
-- name: Cloning Astronvim
-  git:
-    repo=https://github.com/AstroNvim/AstroNvim
-    dest=~/.config/nvim
-
-########## END NVIM STUFF ########################
-
 
 ################ RUST START YEAH ######################
 
