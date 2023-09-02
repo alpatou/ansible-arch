@@ -32,4 +32,4 @@ Launch the playbook, some tasks require root usage, so `--ask-become-pass` will 
 ansible-playbook --inventory hosts --connection=local main.yml --ask-become-pass
 ```
 
-If you don't want to use the `packages` role, you can modify `ansible/main.yml` and delete the role.
+If you don't want to use the `packages` role, you can modify `ansible/main.yml` and delete the role..
