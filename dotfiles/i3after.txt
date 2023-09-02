@@ -1,0 +1,55 @@
+HDMI extention 
+
+run xrandr find the monitor  (and duplicate)
+
+ xrandr --output HDMI-1 --same-as eDP-1
+
+
+
+Touchpad click on save 
+
+sudo dnf install xinput
+
+
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+xinput set-prop 12 "libinput Tapping Enabled" 1 (id of the other dell touchpad)
+
+
+sudo dnf install -y screenkey git neovim  polybar
+
+
+config 
+
+[module/i3]
+type = internal/i3
+label-focused = %index%
+label-focused-background = ${colors.darkgrey}
+label-focused-foreground = ${colors.white}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.grey}
+label-unfocused-padding = 1
+label-urgent = %index%
+label-urgent-foreground = ${colors.white}
+label-urgent-background = ${colors.red}
+label-urgent-padding = 1
+
+
+#!/bin/bash
+# Terminate already running bar instances
+killall -q polybar
+# If all your bars have ipc enabled, you can also use 
+# polybar-msg cmd quit
+# Launch Polybar, using default config location ~/.config/polybar/config
+polybar mybar 2>&1 | tee -a /tmp/polybar.log & disown
+echo "Polybar launched..."
+
+
+
+chmod u+x ~/.config/polybar/launch.sh
+
+
+# use Polybar instead of i3bar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
