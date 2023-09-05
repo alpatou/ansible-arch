@@ -26,3 +26,6 @@ ln -s "$PWD/i3" "$host_config_dir"
 # Create symbolic links for polybar config files
 rm -rf "$host_config_dir/polybar"
 ln -s "$PWD/polybar" "$host_config_dir"
+
+
+cp .xinitrc $HOME/
