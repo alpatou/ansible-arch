@@ -64,3 +64,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"
 
 
+# about lsp check these 
+
+https://ar.al/2022/11/14/installing-helix-editor-language-servers/
+
+https://roderik.no/helix-editor-with-multiple-lsps-for-one-language
