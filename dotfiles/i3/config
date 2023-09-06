@@ -36,9 +36,7 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 exec_always --no-startup-id xrandr --output HDMI-1 --same-as eDP-1
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 set $refresh_i3status killall -SIGUSR1 i3status
-set $refresh_i3status killall -SIGUSR1 i3status-rs
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -207,5 +205,20 @@ bar {
     urgent_workspace   #EC69A0 #DB3279 #FFFFFF
     binding_mode       #b691d3 #A07CBC #FFFFFF
   }
-  status_command i3status
+  font pango:DejaVu Sans Mono, FontAwesome 5 Free
+  status_command /usr/bin/i3status-rs $HOME/.config/i3status-rust/config.toml
 }
+
+
+
+# Keyboard layout language option
+# Cycle through "us" and "gr" layouts using space key and shift
+ exec --no-startup-id setxkbmap -option grp:switch,grp:ctrl_alt_toggle us,gr
+
+exec --no-startup-id killall redshift redshift -l 39.41:20.55 -t 6500:4500 -g 0.8 -m randr -v 
+
+
+# # Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
+

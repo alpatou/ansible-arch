@@ -27,5 +27,9 @@ ln -s "$PWD/i3" "$host_config_dir"
 rm -rf "$host_config_dir/polybar"
 ln -s "$PWD/polybar" "$host_config_dir"
 
+rm -rf "$host_config_dir/i3status-rust"
+ln -s "$PWD/i3status-rust" "$host_config_dir"
+
+
 
 cp .xinitrc $HOME/
