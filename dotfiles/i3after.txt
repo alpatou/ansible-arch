@@ -15,10 +15,14 @@ xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 xinput set-prop 12 "libinput Tapping Enabled" 1 (id of the other dell touchpad)
 
 
-sudo dnf install -y screenkey git neovim  redshift
- dnf copr enable atim/i3status-rust
- dnf install i3status-rust
+sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all
+dnf copr enable atim/i3status-rust
+dnf install i3status-rust
 
+
+ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s $(which zsh) for root and 
+chsh -s /bin/zsh <username>
 
 config 
 

@@ -13,23 +13,19 @@ if [ ! -d "$i3_config_dir" ]; then
   mkdir -p "$i3_config_dir"
 fi
 
-# Check if polybar config directory exists, and create it if it doesn't
-if [ ! -d "$polybar_config_dir" ]; then
-  mkdir -p "$polybar_config_dir"
-fi
 
 # Create symbolic links for i3 config files
 #ln -s "$config_dir/i3" "$i3_config_dir/config"
 rm -rf "$HOME/.config/i3"
 ln -s "$PWD/i3" "$host_config_dir"
 
-# Create symbolic links for polybar config files
-rm -rf "$host_config_dir/polybar"
-ln -s "$PWD/polybar" "$host_config_dir"
-
 rm -rf "$host_config_dir/i3status-rust"
 ln -s "$PWD/i3status-rust" "$host_config_dir"
 
+if [ -f "$HOME/.zshrc" ]; then 
+  rm "$HOME/.zshrc"
+fi
 
+ln -s "$PWD/.zshrc" "$HOME/.zshrc"
 
 cp .xinitrc $HOME/
