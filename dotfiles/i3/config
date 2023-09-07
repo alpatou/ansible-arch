@@ -222,3 +222,11 @@ exec --no-startup-id killall redshift redshift -l 39.41:20.55 -t 6500:4500 -g 0.
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
 
+##==================================================##
+#        * Workspace specific settings *        #
+##=================================================##
+# Assign Workspaces:
+assign [class="Xfce4-terminal"] $ws1
+assign [class="firefox"] $ws2
+
+exec --no-startup-id firefox 
