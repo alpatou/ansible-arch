@@ -12,7 +12,6 @@ polybar_config_dir="$HOME/.config/polybar"
 if [ ! -d "$i3_config_dir" ]; then
   mkdir -p "$i3_config_dir" fi
 
-
 # Create symbolic links for i3 config files
 #ln -s "$config_dir/i3" "$i3_config_dir/config"
 rm -rf "$HOME/.config/i3"
@@ -27,8 +26,6 @@ fi
 
 ln -s "$PWD/.zshrc" "$HOME/.zshrc"
 
-
-
 if [ -d "$host_config_dir/broot" ]; then
   rm -rf "$host_config_dir/broot"
 fi
@@ -36,7 +33,6 @@ fi
 ln -s "$PWD/broot" "$HOME/.config/broot"
 
 cp .xinitrc $HOME/
-
 
 sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs
 sudo dnf copr enable atim/i3status-rust
@@ -60,12 +56,20 @@ newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
-
-
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cargo install --locked broot
 
 sudo npm install -g npx
 
-npm install  @ansible/ansible-language-server
+npm install  @ansible/ansible-language-server yaml-language-server@next dockerfile-language-server-nodejs  typescript typescript-language-server intelephense
+
+rustup component add rust-analyzer
+
+sudo dnf install snapd
+
+sudo ln -s /var/lib/snapd/snap /snap
+
+sudo snap install clangd --classic
+
+
