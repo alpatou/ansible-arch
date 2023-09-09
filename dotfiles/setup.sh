@@ -10,8 +10,7 @@ polybar_config_dir="$HOME/.config/polybar"
 
 # Check if i3 config directory exists, and create it if it doesn't
 if [ ! -d "$i3_config_dir" ]; then
-  mkdir -p "$i3_config_dir"
-fi
+  mkdir -p "$i3_config_dir" fi
 
 
 # Create symbolic links for i3 config files
@@ -67,4 +66,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cargo install --locked broot
 
-npm install -g npx
+sudo npm install -g npx
+
+npm install  @ansible/ansible-language-server
