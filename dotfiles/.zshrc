@@ -39,5 +39,6 @@ source $ZSH/oh-my-zsh.sh
 EDITOR=hx
 
 export PATH=$HOME/node_modules/.bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
 source /home/koral/.config/broot/launcher/bash/br

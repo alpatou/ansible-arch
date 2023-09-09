@@ -34,7 +34,7 @@ ln -s "$PWD/broot" "$HOME/.config/broot"
 
 cp .xinitrc $HOME/
 
-sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs
+sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs clang--tools-extra golang
 sudo dnf copr enable atim/i3status-rust
 sudo dnf install -y i3status-rust
 
@@ -66,10 +66,6 @@ npm install  @ansible/ansible-language-server yaml-language-server@next dockerfi
 
 rustup component add rust-analyzer
 
-sudo dnf install snapd
-
-sudo ln -s /var/lib/snapd/snap /snap
-
-sudo snap install clangd --classic
-
-
+go install golang.org/x/tools/gopls@latest          # LSP
+go install github.com/go-delve/delve/cmd/dlv@latest # Debugger
+go install golang.org/x/tools/cmd/goimports@latest  # Formatter
