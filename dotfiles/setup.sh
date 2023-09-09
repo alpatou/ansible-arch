@@ -20,6 +20,13 @@ ln -s "$PWD/i3" "$host_config_dir"
 rm -rf "$host_config_dir/i3status-rust"
 ln -s "$PWD/i3status-rust" "$host_config_dir"
 
+
+if [ -f "$HOME/.aliases" ]; then 
+  rm "$HOME/.aliases"
+fi
+
+ln -s "$PWD/.aliases" "$HOME/.aliases"
+
 if [ -f "$HOME/.zshrc" ]; then 
   rm "$HOME/.zshrc"
 fi

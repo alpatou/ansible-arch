@@ -42,3 +42,8 @@ export PATH=$HOME/node_modules/.bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 
 source /home/koral/.config/broot/launcher/bash/br
+
+
+alias godot="~/Godot_v3.5.2-stable_x11.64"
+
+source .aliases
