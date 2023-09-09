@@ -28,4 +28,43 @@ fi
 
 ln -s "$PWD/.zshrc" "$HOME/.zshrc"
 
+
+
+if [ -d "$host_config_dir/broot" ]; then
+  rm -rf "$host_config_dir/broot"
+fi
+
+ln -s "$PWD/broot" "$HOME/.config/broot"
+
 cp .xinitrc $HOME/
+
+
+sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs
+sudo dnf copr enable atim/i3status-rust
+sudo dnf install -y i3status-rust
+
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s $(which zsh) for root and 
+chsh -s /bin/zsh <username>
+
+sudo dnf copr enable varlad/helix
+sudo dnf install -y helix
+
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+systemctl start docker
+newgrp docker
+#docker run hello-world
+
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+
+
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install --locked broot
+
+npm install -g npx

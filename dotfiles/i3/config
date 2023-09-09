@@ -226,7 +226,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease 
 #        * Workspace specific settings *        #
 ##=================================================##
 # Assign Workspaces:
-assign [class="Xfce4-terminal"] $ws1
+#assign [class="Gnome-terminal"] $ws1
+#assign [class="Xfce4-terminal"] $ws1
 assign [class="firefox"] $ws2
 
+exec --no-startup-id i3-msg 'workspace 1; exec gnome-terminal'
 exec --no-startup-id firefox 

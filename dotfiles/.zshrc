@@ -38,3 +38,5 @@ source $ZSH/oh-my-zsh.sh
 # Allow us to edit the command line into our prefered editor
 EDITOR=hx
 
+
+source /home/koral/.config/broot/launcher/bash/br
