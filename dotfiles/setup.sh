@@ -41,7 +41,7 @@ ln -s "$PWD/broot" "$HOME/.config/broot"
 
 cp .xinitrc $HOME/
 
-sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs clang--tools-extra golang vlc
+sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs clang--tools-extra golang vlc light
 sudo dnf copr enable atim/i3status-rust
 sudo dnf install -y i3status-rust
 

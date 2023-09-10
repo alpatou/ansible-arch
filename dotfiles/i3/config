@@ -219,9 +219,10 @@ exec --no-startup-id killall redshift redshift -l 39.41:20.55 -t 6500:4500 -g 0.
 
 
 # # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
-
+#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 1 # increase screen brightness
 ##==================================================##
 #        * Workspace specific settings *        #
 ##=================================================##
