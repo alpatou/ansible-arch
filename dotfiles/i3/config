@@ -229,6 +229,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease 
 #assign [class="Gnome-terminal"] $ws1
 #assign [class="Xfce4-terminal"] $ws1
 assign [class="firefox"] $ws2
+assign [class="Shotcut"] $ws4
+assign [class="Audacity"] $ws5
+assign [class="obs"] $ws6
 
 exec --no-startup-id i3-msg 'workspace 1; exec gnome-terminal'
 exec --no-startup-id firefox 

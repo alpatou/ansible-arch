@@ -76,3 +76,20 @@ rustup component add rust-analyzer
 go install golang.org/x/tools/gopls@latest          # LSP
 go install github.com/go-delve/delve/cmd/dlv@latest # Debugger
 go install golang.org/x/tools/cmd/goimports@latest  # Formatter
+
+
+
+# setup obs make it optional 
+
+
+sudo dnf install snapd
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install audacity
+sudo snap install shotcut --classic
+
+
+
+
+
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install obs-studio -y
