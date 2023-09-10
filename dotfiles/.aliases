@@ -1,3 +1,7 @@
 alias godot="~/godot/Godot_v3.5.2-stable_x11.64"
 alias godot4="~/godot/Godot_v4.1.1-stable_linux.x86_64"
 
+
+alias night="redshift -O 3500"
+alias day="redshift -x"
+
