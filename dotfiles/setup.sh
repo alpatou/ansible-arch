@@ -10,7 +10,8 @@ polybar_config_dir="$HOME/.config/polybar"
 
 # Check if i3 config directory exists, and create it if it doesn't
 if [ ! -d "$i3_config_dir" ]; then
-  mkdir -p "$i3_config_dir" fi
+  mkdir -p "$i3_config_dir" 
+fi
 
 # Create symbolic links for i3 config files
 #ln -s "$config_dir/i3" "$i3_config_dir/config"
@@ -41,14 +42,14 @@ ln -s "$PWD/broot" "$HOME/.config/broot"
 
 cp .xinitrc $HOME/
 
-sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs clang--tools-extra golang vlc light
-sudo dnf copr enable atim/i3status-rust
-sudo dnf install -y i3status-rust
+#sudo dnf install -y screenkey git neovim  redshift zsh fontawesome-fonts-all docker git-delta libxcb gcc gcc-c++ nodejs clang-tools-extra golang vlc light
+#sudo dnf copr enable atim/i3status-rust
+#sudo dnf install -y i3status-rust
 
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s $(which zsh) for root and 
-chsh -s /bin/zsh <username>
+#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#chsh -s $(which zsh) for root and 
+#chsh -s /bin/zsh <username>
 
 sudo dnf copr enable varlad/helix
 sudo dnf install -y helix
@@ -77,19 +78,13 @@ go install golang.org/x/tools/gopls@latest          # LSP
 go install github.com/go-delve/delve/cmd/dlv@latest # Debugger
 go install golang.org/x/tools/cmd/goimports@latest  # Formatter
 
-
-
 # setup obs make it optional 
 
-
-sudo dnf install snapd
-sudo ln -s /var/lib/snapd/snap /snap
-sudo snap install audacity
-sudo snap install shotcut --classic
-
-
-
-
+#sudo dnf install snapd
+#sudo ln -s /var/lib/snapd/snap /snap
+#sudo snap install audacity
+#sudo snap install shotcut --classic
 
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install obs-studio -y
+#sudo dnf install -y obs-studio
+
