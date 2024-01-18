@@ -9,39 +9,30 @@ i3_config_dir="$HOME/.config/i3"
 polybar_config_dir="$HOME/.config/polybar"
 
 # Check if i3 config directory exists, and create it if it doesn't
-if [ ! -d "$i3_config_dir" ]; then
-  mkdir -p "$i3_config_dir" 
+
+if [ -d "$i3_config_dir" ]; then
+  rm -rf "$i3_config_dir"
 fi
 
 # Create symbolic links for i3 config files
-#ln -s "$config_dir/i3" "$i3_config_dir/config"
-rm -rf "$HOME/.config/i3"
+# -sf "$config_dir/i3" "$i3_config_dir/config"
 
 if [[ ! -L "$host_config_dir/i3" ]]; then
-  ln -s "$PWD/i3" "$host_config_dir"
+  ln -sf "$PWD/i3" "$host_config_dir"
 fi
 
 rm -rf "$host_config_dir/i3status-rust"
 
 if [[ ! -L "$host_config_dir/i3status-rust" ]]; then
-  ln -s "$PWD/i3status-rust" "$host_config_dir"
+  ln -sf "$PWD/i3status-rust" "$host_config_dir"
 fi
-
 
 if [ -f "$HOME/.aliases" ]; then 
   rm "$HOME/.aliases"
 fi
 
-if [[ ! -L "$host_config_dir/.aliases" ]]; then
-  ln -s "$PWD/.aliases" "$HOME/.aliases"
-fi
-
-if [ -f "$HOME/.zshrc" ]; then 
-  rm "$HOME/.zshrc"
-fi
-
-if [[ ! -L "$host_config_dir/.zshrc" ]]; then
-  ln -s "$PWD/.zshrc" "$HOME/.zshrc"
+if [[ ! -L "$HOME/.aliases" ]]; then
+  ln -sf "$PWD/.aliases" "$HOME"
 fi
 
 
@@ -52,22 +43,18 @@ sudo dnf copr enable atim/i3status-rust
 sudo dnf install -y i3status-rust
 
 
-#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#sudo chsh -s $(which zsh)  root  
-#chsh -s /bin/zsh $USER 
-
 sudo dnf copr enable varlad/helix
 sudo dnf install -y helix
 
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
-systemctl start docker
-newgrp docker
+#sudo groupadd docker
+#sudo usermod -aG docker $USER
+#systemctl start docker
+#newgrp docker
 #docker run hello-world
 
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
+#sudo systemctl enable docker.service
+#sudo systemctl enable containerd.service
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -81,7 +68,7 @@ if [ -d "$host_config_dir/broot" ]; then
 fi
 
 if [[ ! -L "$host_config_dir/broot" ]]; then
-  ln -sf "$PWD/broot" "$host_config_dir/broot"
+  ln -sf "$PWD/broot" "$host_config_dir"
 fi
 
 sudo npm install -g npx
@@ -99,7 +86,7 @@ go install golang.org/x/tools/cmd/goimports@latest  # Formatter
 sudo dnf install snapd
 
 if [[ ! -L "/snap" ]]; then
-  sudo ln -s /var/lib/snapd/snap /snap
+  sudo ln -sf /var/lib/snapd/snap /snap
 fi
 
 
@@ -121,11 +108,12 @@ if [ ! -d "$HOME/code/cheruvim" ]; then
 fi
 
 if [  -d "$host_config_dir/nvim" ]; then
-  mv  "$host_config_dir/nvim"  "$host_config_dir/nvim.bak" 
+  rm -rf  "$host_config_dir/nvim"  
 fi
 
 if [[ ! -L "$host_config_dir/nvim" ]]; then
-	ln -s "$PWD/cheruvim" "$host_config_dir/nvim"
+	ln -sf "$PWD/cheruvim" "$host_config_dir"
+	mv "$host_config_dir/cheruvim" "$host_config_dir/nvim"
 fi
 
 
@@ -134,12 +122,39 @@ if [ ! -d "$HOME/code/helix-vim" ]; then
 fi
 
 if [  -d "$host_config_dir/helix" ]; then
-  mv  "$host_config_dir/helix"  "$host_config_dir/helix.bak" 
+  rm -rf  "$host_config_dir/helix" 
 fi
 
 
 if [[ ! -L "$host_config_dir/helix" ]]; then
-	ln -s "$PWD/helix-vim" "$host_config_dir/helix"
+	ln -sf "$PWD/helix-vim" "$host_config_dir"
+	mv "$host_config_dir/helix-vim" "$host_config_dir/helix"
 fi
+
+
+
+if [ -d "$HOME/.oh-my-zsh" ]; then 
+  rm -rf "$HOME/.oh-my-zsh"
+fi
+
+if [ -f "$HOME/.zshrc" ]; then 
+  rm "$HOME/.zshrc"
+fi
+
+
+
+sudo chsh -s $(which zsh)  root  
+chsh -s $(which zsh) $USER 
+
+if [[ ! -L "$HOME/.zshrc" ]]; then
+  ln -sf "$PWD/.zshrc" "$HOME"
+fi
+
+if [ -d "$HOME/.oh-my-zsh" ]; then
+	rm -rf "$HOME/.oh-my-zsh" 
+fi
+
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
