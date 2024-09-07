@@ -1,0 +1,18 @@
+import = [
+  "/home/koral/.nvm/versions/node/v20.17.0/lib/node_modules/alacritty-themes/themes/Baskerville - ivory dark.toml"
+]
+
+[font.normal]
+family = "Iosevka"
+style = "Regular"
+
+[font.bold]
+family = "Iosevka"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka"
+style = "Italic"
+
+[font.italic.font]
+size = 12
