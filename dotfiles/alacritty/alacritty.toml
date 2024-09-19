@@ -6,13 +6,13 @@ import = [
 size = 12
 
   [font.normal]
-  family = "Iosevka"
+  family = "Iosevka Nerd Font"
   style = "Regular"
 
   [font.bold]
-  family = "Iosevka"
+  family = "Iosevka Nerd Font"
   style = "Bold"
 
   [font.italic]
-  family = "Iosevka"
+  family = "Iosevka Nerd Font"
   style = "Italic"
