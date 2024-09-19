@@ -11,6 +11,9 @@ git clone https://github.com/Canop/broot.git
 cd broot
 cargo install --locked broot
 
+# ripgrep
+cargo install ripgrep
+# git clone git@github.com:BurntSushi/ripgrep.git
 
 #alacritty
 git clone https://github.com/alacritty/alacritty.git
