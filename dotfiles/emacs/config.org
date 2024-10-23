@@ -91,7 +91,7 @@
   (setq evil-want-keybinding nil) ;; Disable default evil keybindings for some modes
   :config
   ;; Enable evil-mode as soon as it's loaded
-  (evil-mode 1))
+  ;;(evil-mode 1))
 
 ;;Turns off elpaca-use-package-mode current declaration
 ;;Note this will cause evaluate the declaration immediately. It is not deferred.
