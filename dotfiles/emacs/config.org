@@ -84,7 +84,7 @@
 ;; Expands to: (elpaca evil (use-package evil :demand t))
 (use-package evil
   :ensure t
-  :demand t
+  ;;:demand t
   :init
   ;; Any custom settings before evil is loaded
   (setq evil-want-integration t)  ;; Integrate with other Emacs modes (default is t)
