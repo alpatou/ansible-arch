@@ -7,6 +7,9 @@
 **/*.elc
 **/*.eln
 
+**/*.eld
+*.eld
+
 # Elpaca, Straight, or other package manager build directories
 /elpaca/
 /straight/
