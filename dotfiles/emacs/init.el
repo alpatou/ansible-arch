@@ -1,22 +1,10 @@
-;; ====================
-;; General Settings
-;; ====================
+;; Add custom configuration directory to load-path
+(add-to-list 'load-path "~/.emacs.d/choices")
 
-(setq inhibit-startup-message t)
+;; Load individual configuration files
+(load "general.el")
+(load "ui.el")
 
-
-;; ============================
-;; UI Settings
-;; ============================
-
-;;(set-fringe-mode 10)
-
-(setq visible-bell t)
-
-(set-face-attribute 'default nil 
-		    :font "Fira Code Retina-14")
-
-(load-theme 'wombat t)
 
 
 ;; ============================
