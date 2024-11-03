@@ -11,6 +11,7 @@
 
 (load-theme 'wombat t)
 
+(show-paren-mode 1)
 ;; ============================
 ;; Line Numbers Configuration
 ;; ============================

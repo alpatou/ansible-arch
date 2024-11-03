@@ -3,8 +3,8 @@
 ;; ===========================
 
 ;; Refresh package list if `ivy` is not already installed
-(unless (package-installed-p 'ivy) 
-  (package-refresh-contents) 
-  (package-install 'ivy))
+(use-package
+  ivy
+  :ensure t)
 
-(ivy-mode 1)
+;;(ivy-mode 1)
