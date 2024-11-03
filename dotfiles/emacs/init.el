@@ -20,4 +20,4 @@
 (add-hook 'emacs-lisp-mode-hook (lambda () 
 				  (add-hook 'before-save-hook 'elisp-format-buffer nil 'local)))
 
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.config/emacs/custom.el")
