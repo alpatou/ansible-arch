@@ -1,5 +1,5 @@
 ;; Add custom configuration directory to load-path
-(add-to-list 'load-path "~/.emacs.d/choices")
+(add-to-list 'load-path "~/.config/emacs/choices")
 
 ;; Load individual configuration files
 (load "general.el")
