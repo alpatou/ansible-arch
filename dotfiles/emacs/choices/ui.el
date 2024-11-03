@@ -9,9 +9,12 @@
 (set-face-attribute 'default nil 
 		    :font "Fira Code Retina-14")
 
+(setq-default line-spacing 0.2)
+
 (load-theme 'wombat t)
 
 (show-paren-mode 1)
+
 ;; ============================
 ;; Line Numbers Configuration
 ;; ============================
