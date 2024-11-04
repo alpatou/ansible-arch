@@ -33,3 +33,6 @@
   :ensure t 
   :config (setq company-minimum-prefix-length 1 company-idle-delay 0.0) 
   :hook (prog-mode . company-mode))
+
+;; Ensure syntax highlighting is enabled globally
+(global-font-lock-mode 1)
