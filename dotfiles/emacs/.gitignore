@@ -52,3 +52,4 @@ config.el
 # Personal customization files (if you're using custom-set-variables)
 custom.el
 
+recentf
