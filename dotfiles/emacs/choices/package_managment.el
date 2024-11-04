@@ -20,4 +20,4 @@
 (require 'use-package)
 
 (setq use-package-always-ensure t)
-
+(defun package--save-selected-packages (&rest opt) nil)
