@@ -5,8 +5,8 @@
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/") 
 			 ("org" . "https://orgmode.org/elpa/") 
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
-;;        ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+			 ("elpa" . "https://elpa.gnu.org/packages/") 
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (setq package-check-signature nil)
 
@@ -20,4 +20,7 @@
 (require 'use-package)
 
 (setq use-package-always-ensure t)
-(defun package--save-selected-packages (&rest opt) nil)
+(defun package--save-selected-packages 
+    (&rest 
+     opt)
+  nil)

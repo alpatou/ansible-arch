@@ -8,6 +8,7 @@
 (load "package_managment.el")
 (load "ivy-config.el")
 (load "keybindings.el")
+(load "lsp-config.el")
 
 ;; ============================
 ;; Auto-formatting Configuration
