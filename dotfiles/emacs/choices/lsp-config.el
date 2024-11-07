@@ -20,12 +20,22 @@
   :config (setq lsp-idle-delay 0.500 lsp-completion-provider 
 		:capf))
 
+(setq lsp-eldoc-render-all t)
+
+(use-package 
+  go-mode 
+  :ensure t 
+  :mode "\\.go\\'" 
+  :hook (go-mode . lsp-deferred))
+
 ;; Additional UI features for LSP (optional)
 (use-package 
   lsp-ui 
   :ensure t 
   :commands lsp-ui-mode 
-  :config (setq lsp-ui-sideline-enable t lsp-ui-doc-enable t))
+  :config (setq lsp-ui-sideline-enable t lsp-ui-sideline-show-diagnostics t ;; Enable inline diagnostics
+		lsp-ui-sideline-show-hover t lsp-ui-doc-enable t lsp-ui-doc-delay 0.5
+		lsp-ui-flycheck-enable t)) ;; Enable Flycheck integration for diagnostics
 
 ;; Company-mode for autocompletion
 (use-package 
@@ -36,3 +46,11 @@
 
 ;; Ensure syntax highlighting is enabled globally
 (global-font-lock-mode 1)
+
+(use-package 
+  flycheck 
+  :ensure t 
+  :config (global-flycheck-mode))
+
+(setq lsp-diagnostics-provider 
+      :flycheck) ;; Use Flycheck for diagnostics
