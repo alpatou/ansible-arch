@@ -13,6 +13,17 @@
   :hook (python-mode . eglot-ensure))
 
 (use-package 
+  elisp-format 
+  :vc (:url "https://github.com/gonewest818/elisp-format.git")
+  :ensure t)
+
+(use-package
+  rust-mode
+  :vc (:url "https://github.com/rust-lang/rust-mode")
+  :ensure t
+  :hook (rust-mode . eglot-ensure))
+
+(use-package 
   go-mode 
   :vc (:url "https://github.com/dominikh/go-mode.el.git")
   :ensure t 
