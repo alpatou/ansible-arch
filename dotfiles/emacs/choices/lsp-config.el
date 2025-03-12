@@ -2,35 +2,26 @@
 ;;        LSP
 ;; ====================
 
+;; C, Rust , Lisp , Haskell, ELixir/Erlang  
+;; PHP, TS 
 ;; LSP Mode for multiple languages
-(use-package 
-  lsp-mode 
-  :ensure t 
-  :commands (lsp lsp-deferred) 
-  :hook ((php-mode . lsp) 
-	 (rust-mode . lsp) 
-	 (go-mode . lsp) 
-	 (typescript-mode . lsp) 
-	 (js-mode . lsp) 
-	 (html-mode . lsp) 
-	 (python-mode . lsp) 
-	 (haskell-mode . lsp) 
-	 (c-mode . lsp) 
-	 (lisp-mode . lsp)) 
-  :config (setq lsp-idle-delay 0.500 lsp-completion-provider 
-		:capf))
+(use-package eglot
+  :ensure t)
 
-(setq lsp-eldoc-render-all t)
+(use-package python
+  :ensure nil
+  :hook (python-mode . eglot-ensure))
 
 (use-package 
   go-mode 
+  :vc (:url "https://github.com/dominikh/go-mode.el.git")
   :ensure t 
-  :mode "\\.go\\'" 
-  :hook (go-mode . lsp-deferred))
+  :hook (go-mode . eglot-ensure))
 
 ;; Additional UI features for LSP (optional)
 (use-package 
   lsp-ui 
+  :vc (:url "https://github.com/emacs-lsp/lsp-ui.git")
   :ensure t 
   :commands lsp-ui-mode 
   :config (setq lsp-ui-sideline-enable t lsp-ui-sideline-show-diagnostics t ;; Enable inline diagnostics
@@ -38,19 +29,17 @@
 		lsp-ui-flycheck-enable t)) ;; Enable Flycheck integration for diagnostics
 
 ;; Company-mode for autocompletion
-(use-package 
-  company 
+(use-package company 
   :ensure t 
+  :vc (:url "https://github.com/company-mode/company-mode.git")
   :config (setq company-minimum-prefix-length 1 company-idle-delay 0.0) 
   :hook (prog-mode . company-mode))
 
 ;; Ensure syntax highlighting is enabled globally
 (global-font-lock-mode 1)
 
-(use-package 
-  flycheck 
-  :ensure t 
-  :config (global-flycheck-mode))
+(add-hook 'prog-mode-hook 'flymake-mode)  ;; Enable Flymake for all code
+
 
 (setq lsp-diagnostics-provider 
-      :flycheck) ;; Use Flycheck for diagnostics
+      :flymake) ;; Use Flycheck for diagnostics
