@@ -14,6 +14,8 @@
 ;; ============================
 ;; Auto-formatting Configuration
 ;; ============================
+;;(require 'package)
+;;(package-initialize)
 
 ;;(org-babel-load-file (concat user-emacs-directory "configuration.org"))
 
@@ -33,6 +35,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(company elisp-format go-mode lsp-ui rust-mode))
  '(package-vc-selected-packages '((lsp-ui :url "https://github.com/emacs-lsp/lsp-ui.git"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
