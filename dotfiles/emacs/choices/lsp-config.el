@@ -2,6 +2,8 @@
 ;;        LSP
 ;; ====================
 
+(electric-pair-mode t)
+(setq electric-pair-open-newline-between-pairs t)
 ;; C, Rust , Lisp , Haskell, ELixir/Erlang
 ;; PHP, TS
 ;; LSP Mode for multiple languages

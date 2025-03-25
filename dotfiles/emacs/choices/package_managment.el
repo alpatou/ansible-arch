@@ -12,7 +12,7 @@
          ))
 
 (setq package-enable-at-startup nil)
-(setq use-package-always-ensure nil) ;; Disable automatic installation
+;;(setq use-package-always-ensure nil) ;; Disable automatic installation
 
 ;; This is how we can install a package directly from its Git source
 ;; repository.
