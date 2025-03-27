@@ -8,7 +8,13 @@
 ;; PHP, TS
 ;; LSP Mode for multiple languages
 (use-package eglot
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs
+               '((typescript-ts-mode tsx-ts-mode) . ("typescript-language-server" "--stdio"))))
+
+(add-hook 'typescript-ts-mode-hook 'eglot-ensure)
+(add-hook 'tsx-ts-mode-hook 'eglot-ensure)
 
 (defun my-custom-format-before-save ()
   "Auto-format Emacs Lisp before saving."
@@ -97,3 +103,19 @@
 
 (setq lsp-diagnostics-provider
       :flymake) ;; Use Flycheck for diagnostics
+
+
+
+
+
+(defun check-lsp-server ()
+  "Check if eglot is running and suggest the preferred LSP server if missing."
+  (interactive)
+  (let ((lsp-server (eglot--guess-contact)))
+    (if (not eglot--managed-mode)
+        (if lsp-server
+            (message "⚠️ No LSP server running. Suggested LSP for this mode: %s" lsp-server)
+          (message "⚠️ No LSP server running, and no default server found for this mode.")))
+    (message "✅ LSP server is running.")))
+
+(global-set-key (kbd "C-c v") 'check-lsp-server)
