@@ -9,9 +9,7 @@
 ;; LSP Mode for multiple languages
 (use-package eglot
   :ensure t
-  :config
-  (add-to-list 'eglot-server-programs
-               '((typescript-ts-mode tsx-ts-mode) . ("typescript-language-server" "--stdio"))))
+  )
 
 (add-hook 'typescript-ts-mode-hook 'eglot-ensure)
 (add-hook 'tsx-ts-mode-hook 'eglot-ensure)
@@ -50,6 +48,11 @@
 (add-hook 'before-save-hook 'my-custom-format-before-save)
 
 (add-hook 'prog-mode-hook 'eglot-ensure)
+
+
+(use-package typescript-mode
+  :ensure t
+  :mode ("\\.tsx?$" . typescript-mode))
 
 
 (use-package python
