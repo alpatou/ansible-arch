@@ -17,9 +17,9 @@
 ;; This is how we can install a package directly from its Git source
 ;; repository.
 
-;; Install use-package if not already installed
-(unless (package-installed-p 'use-package)
-  ;;(package-refresh-contents)
-  (unless package-archive-contents  ;; Only refresh if the package list is empty
-    (package-refresh-contents))
-  (package-install 'use-package))
+
+(when (< emacs-major-version 29)
+  (unless (package-installed-p 'use-package)
+    (unless package-archive-contents
+      (package-refresh-contents))
+    (package-install 'use-package)))

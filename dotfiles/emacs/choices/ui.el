@@ -6,7 +6,7 @@
 
 (setq visible-bell t)
 
-(set-face-attribute 'default nil 
+(set-face-attribute 'default nil
 		    :font "Fira Code Retina-14")
 
 (setq-default line-spacing 0.2)
@@ -23,6 +23,20 @@
 (setq display-line-numbers-type 'relative)
 
 ;; Customize the current line number face for better visibility
-(set-face-attribute 'line-number-current-line nil 
-		    :foreground "red" 
+(set-face-attribute 'line-number-current-line nil
+		    :foreground "red"
 		    :weight 'bold)
+(use-package vertico
+  :ensure t
+  )
+
+(use-package marginalia
+  :ensure t
+  :hook (after-init . marginalia-mode))
+
+(use-package orderless
+  :ensure t
+  :config
+  (setq completion-styles '(orderless basic))
+  (setq completion-category-defaults nil)
+  (setq completion-category-overrides nil))

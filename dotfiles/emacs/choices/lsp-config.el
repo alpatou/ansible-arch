@@ -3,12 +3,48 @@
 ;; ====================
 
 (electric-pair-mode t)
-(setq electric-pair-open-newline-between-pairs t)
+(setq             electric-pair-open-newline-between-pairs t)
 ;; C, Rust , Lisp , Haskell, ELixir/Erlang
 ;; PHP, TS
 ;; LSP Mode for multiple languages
 (use-package eglot
   :ensure t)
+
+(defun my-custom-format-before-save ()
+  "Auto-format Emacs Lisp before saving."
+  (if (derived-mode-p 'prog-mode)
+      (progn
+	(message "✅ You are in a programming mode! -> So i formated you...")
+	(eglot-format)
+	)
+    ))
+
+(defun my-interactive-custom-format ()
+  "Auto-format Emacs Lisp before saving."
+  (interactive)
+  (if (derived-mode-p 'prog-mode)
+      (progn
+	(message "✅ You are in a programming mode! -> So i formated you...")
+	(eglot-format)
+	)
+    ))
+
+
+(defun check-if-prog-mode ()
+  "Check if the current major mode is derived from 'prog-mode'."
+  (interactive)
+  (if (derived-mode-p 'prog-mode)
+      (message "✅ You are in a programming mode!")
+    (message "❌ This is NOT a programming mode.")))
+
+(global-set-key (kbd "C-c p") 'check-if-prog-mode)
+(global-set-key (kbd "C-c f") 'my-interactive-custom-format)
+
+
+(add-hook 'before-save-hook 'my-custom-format-before-save)
+
+(add-hook 'prog-mode-hook 'eglot-ensure)
+
 
 (use-package python
   :hook (python-mode . eglot-ensure))
@@ -16,6 +52,9 @@
 (use-package
   elisp-format
   :ensure t )
+
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
 
 (use-package
   rust-mode
@@ -35,9 +74,13 @@
   ;;:vc (:url "https://github.com/emacs-lsp/lsp-ui.git" :rev "HEAD")
   :ensure t
   :commands lsp-ui-mode
-  :config (setq lsp-ui-sideline-enable t lsp-ui-sideline-show-diagnostics t ;; Enable inline diagnostics
-		lsp-ui-sideline-show-hover t lsp-ui-doc-enable t lsp-ui-doc-delay 0.5
-		lsp-ui-flymake-enable t))
+  :config (setq
+	   lsp-ui-sideline-enable t
+	   lsp-ui-sideline-show-diagnostics t ;; Enable inline diagnostics
+	   lsp-ui-sideline-show-hover t
+	   lsp-ui-doc-enable t
+	   lsp-ui-doc-delay 0.5
+	   lsp-ui-flymake-enable t))
 
 ;; Company-mode for autocompletion
 (use-package company
