@@ -53,7 +53,18 @@
 (use-package typescript-mode
   :ensure t
   :mode ("\\.tsx?$" . typescript-mode))
+(use-package dockerfile-mode
+  :ensure t
+  :mode ("Dockerfile\\'" . dockerfile-mode))
 
+(use-package yaml-mode
+  :ensure t
+  :mode ("\\.ya?ml\\'" . yaml-mode))
+
+(add-to-list 'eglot-server-programs
+             '(dockerfile-mode . ("docker-langserver" "--stdio")))
+
+(setenv "YAML_CONFIG_FILE" (expand-file-name "~/.yaml.config.json"))
 
 (use-package python
   :hook (python-mode . eglot-ensure))
