@@ -88,6 +88,25 @@
   :ensure t
   :hook (go-mode . eglot-ensure))
 
+
+;; SLIME setup
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  :config
+  (slime-setup '(slime-fancy)))
+
+;; Paredit (structured editing)
+(use-package paredit
+  :ensure t
+  :hook ((lisp-mode emacs-lisp-mode lisp-interaction-mode) . paredit-mode))
+
+;; Rainbow Delimiters (colored parentheses)
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 ;; Additional UI features for LSP (optional)
 (use-package
   lsp-ui
