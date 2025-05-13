@@ -88,15 +88,6 @@
   :ensure t
   :hook (go-mode . eglot-ensure))
 
-
-;; SLIME setup
-(use-package slime
-  :ensure t
-  :init
-  (setq inferior-lisp-program "/usr/bin/sbcl")
-  :config
-  (slime-setup '(slime-fancy)))
-
 ;; Paredit (structured editing)
 (use-package paredit
   :ensure t
