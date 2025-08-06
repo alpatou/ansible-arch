@@ -4,11 +4,12 @@
 
 ;; Here we disable the ELPA package archive.
 (setq package-archives
-      '( ("gnu-elpa" . "https://elpa.gnu.org/packages/")
+      '( ("melpa" . "https://melpa.org/packages/")
+         ("org" . "https://orgmode.org/elpa/")
+         ("gnu-elpa" . "https://elpa.gnu.org/packages/")
          ;; ("gnu-elpa-devel" . "https://elpa.gnu.org/devel/")
          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-         ("melpa" . "https://melpa.org/packages/")
-	 ("org" . "https://orgmode.org/elpa/")
+
          ))
 
 (setq package-enable-at-startup nil)
@@ -16,7 +17,6 @@
 
 ;; This is how we can install a package directly from its Git source
 ;; repository.
-
 
 (when (< emacs-major-version 29)
   (unless (package-installed-p 'use-package)

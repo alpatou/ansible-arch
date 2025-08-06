@@ -11,7 +11,12 @@
 
 (setq-default line-spacing 0.2)
 
-(load-theme 'wombat t)
+;; Theme Configuration
+(use-package nord-theme
+  :ensure t
+  :config
+  (load-theme 'nord t))
+
 
 (show-paren-mode 1)
 

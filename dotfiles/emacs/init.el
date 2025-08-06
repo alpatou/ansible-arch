@@ -5,8 +5,8 @@
 ;; Load individual configuration files
 ;;(load "custom.el")
 (load "general.el")
-(load "ui.el")
 (load "package_managment.el")
+(load "ui.el")
 (load "keybindings.el")
 (load "lsp-config.el")
 (load "common-lisp-config.el")
