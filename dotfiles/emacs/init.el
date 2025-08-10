@@ -10,6 +10,7 @@
 (load "keybindings.el")
 (load "lsp-config.el")
 (load "common-lisp-config.el")
+(load "org-mode-config.el")
 
 ;; ============================
 ;; Auto-formatting Configuration
