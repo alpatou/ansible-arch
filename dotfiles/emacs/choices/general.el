@@ -19,3 +19,5 @@
 
 ;; Don't show "Reverted buffer" messages in the minibuffer
 (setq auto-revert-verbose nil)
+
+(setq auto-save-default nil)
