@@ -12,6 +12,7 @@
 (load "common-lisp-config.el")
 (load "org-mode-config.el")
 (load "fuzzy-file-config.el")
+(load "terminal-config.el")
 
 ;; ============================
 ;; Auto-formatting Configuration
@@ -39,9 +40,9 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    '(company counsel-projectile dockerfile-mode elisp-format evil go-mode
-	     lsp-ui marginalia nord-theme orderless paredit php-mode
-	     projectile rainbow-delimiters rust-mode slime
-	     typescript-mode vertico yaml-mode))
+	     helm helm-projectile lsp-ui marginalia nord-theme
+	     orderless paredit php-mode projectile rainbow-delimiters
+	     rust-mode slime typescript-mode vertico yaml-mode))
  '(package-vc-selected-packages
    '((tsx-mode :url "https://github.com/orzechowskid/tsx-mode.el"))))
 (custom-set-faces

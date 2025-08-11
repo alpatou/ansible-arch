@@ -28,6 +28,11 @@
 
 # Tramp files
 /.emacs.d/tramp
+*tramp
+.tramp_history
+*~        # backup files
+\#*\#     # auto-save files
+.#*       # lock files
 
 # Org-mode export files
 **/*.html
