@@ -8,6 +8,9 @@
   :after ivy
   :bind (("C-c C-f" . counsel-find-file)))
 
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))
+
 (use-package projectile
   :ensure t
   :config
