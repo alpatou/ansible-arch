@@ -6,3 +6,10 @@
 (global-set-key (kbd "M-<") 'beginning-of-buffer) ;; Go to start of file
 (global-set-key (kbd "M->") 'end-of-buffer)	  ;; Go to end of file
 (global-set-key (kbd "C-x b") 'switch-to-buffer)  ;; Switch buffers
+
+;; Enable directional window movement with Shift+arrow keys
+(windmove-default-keybindings)
+(global-set-key (kbd "C-c h") 'windmove-left)
+(global-set-key (kbd "C-c j") 'windmove-down)
+(global-set-key (kbd "C-c k") 'windmove-up)
+(global-set-key (kbd "C-c l") 'windmove-right)
