@@ -21,3 +21,6 @@
 (setq auto-revert-verbose nil)
 
 (setq auto-save-default nil)
+
+;; Word wrap globally
+(global-visual-line-mode 1)

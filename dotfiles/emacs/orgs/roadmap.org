@@ -1,4 +1,11 @@
+* RESEARCHING [https://github.com/james-stoup/emacs-org-mode-tutorial]
 * RESEARCHING Learning Org mode
 * TODO Magit
 * TINKERING Vterm
 * TINKERING Buffer/Window Managment
+* TODO LLM [https://github.com/karthink/gptel]
+* TINKERING Cheat Sheet [https://www.damtp.cam.ac.uk/user/sje30/ess11/resources/emacs-refcard.pdf]
+* TODO Studying
+** TODO [https://github.com/norvig/paip-lisp/blob/main/README.md]
+** TODO Practical Common Lisp
+** TODO Land of Lisp
