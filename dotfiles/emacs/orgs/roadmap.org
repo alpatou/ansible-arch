@@ -1,0 +1,4 @@
+* RESEARCHING Learning Org mode
+* TODO Magit
+* TINKERING Vterm
+* TINKERING Buffer/Window Managment

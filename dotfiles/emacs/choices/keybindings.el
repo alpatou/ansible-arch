@@ -10,7 +10,7 @@
 (global-set-key (kbd "C-c 2") 'set-mark-command)
 
 ;; Enable directional window movement with Shift+arrow keys
-(windmove-default-keybindings)
+;;(windmove-default-keybindings)
 (global-set-key (kbd "C-c h") 'windmove-left)
 (global-set-key (kbd "C-c j") 'windmove-down)
 (global-set-key (kbd "C-c k") 'windmove-up)
