@@ -11,9 +11,6 @@
   :ensure t
   )
 
-(add-hook 'typescript-ts-mode-hook 'eglot-ensure)
-(add-hook 'tsx-ts-mode-hook 'eglot-ensure)
-
 (defun my-custom-format-before-save ()
   "Auto-format Emacs Lisp before saving."
   (if (derived-mode-p 'prog-mode)
@@ -61,12 +58,16 @@
 ;; Languages here
 ;; ===================================
 
+(add-hook 'typescript-ts-mode-hook 'eglot-ensure)
+(add-hook 'tsx-ts-mode-hook 'eglot-ensure)
 
+(use-package elixir-mode
+  :ensure t
+  :hook (elixir-mode . eglot-ensure))
 
+(add-hook 'elixir-mode-hook 'eglot-ensure)
 
-
-
-
+(add-to-list 'eglot-server-programs '(elixir-mode "~/elixir-ls/language_server.sh"))
 
 (use-package typescript-mode
   :ensure t
@@ -175,10 +176,6 @@
 
 (setq lsp-diagnostics-provider
       :flymake) ;; Use Flycheck for diagnostics
-
-
-
-
 
 (defun check-lsp-server ()
   "Check if eglot is running and suggest the preferred LSP server if missing."
