@@ -3,6 +3,10 @@
 ;; ====================
 
 (setq inhibit-startup-message t)
+
+;; Load cua-base to make cua-mode available for Evil mode
+(require 'cua-base)
+
 (use-package evil
   :ensure t)
 ;; in case i want to delete the selected text on typing
