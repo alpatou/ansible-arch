@@ -38,7 +38,7 @@
       (message "✅ You are in a programming mode!")
     (message "❌ This is NOT a programming mode.")))
 
-(global-set-key (kbd "C-c p") 'check-if-prog-mode)
+(global-set-key (kbd "C-c m i p") 'check-if-prog-mode)
 (global-set-key (kbd "C-c f") 'my-interactive-custom-format)
 
 

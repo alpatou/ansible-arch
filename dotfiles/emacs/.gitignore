@@ -42,6 +42,7 @@
 # Ignore projectile project files
 /.projectile
 /.projectile-cache
+projects
 
 # Lockfiles (created when Emacs opens a file)
 *.lock
