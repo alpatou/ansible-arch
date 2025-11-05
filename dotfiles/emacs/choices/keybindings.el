@@ -15,3 +15,6 @@
 (global-set-key (kbd "C-c j") 'windmove-down)
 (global-set-key (kbd "C-c k") 'windmove-up)
 (global-set-key (kbd "C-c l") 'windmove-right)
+
+;; on mac we have problem, need to overwrite it
+(global-set-key (kbd "C-SPC") 'set-mark-command)
