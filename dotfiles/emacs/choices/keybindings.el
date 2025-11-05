@@ -15,13 +15,3 @@
 (global-set-key (kbd "C-c j") 'windmove-down)
 (global-set-key (kbd "C-c k") 'windmove-up)
 (global-set-key (kbd "C-c l") 'windmove-right)
-
-;; on mac we have problem, need to overwrite it
-
-
-
-(defun my-activate-mark ()
-  "Set mark and activate the region like C-SPC / C-@ does."
-  (interactive)
-  (set-mark-command t)) ;; IMPORTANT: use t, not nil
-(global-set-key (kbd "C-.") #'my-activate-mark)
