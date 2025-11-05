@@ -18,7 +18,10 @@
 
 ;; on mac we have problem, need to overwrite it
 
-(defun my-set-mark ()
+
+
+(defun my-activate-mark ()
+  "Set mark and activate the region like C-SPC / C-@ does."
   (interactive)
-  (set-mark-command nil))
-(global-set-key (kbd "C-.") #'my-set-mark)
+  (set-mark-command t)) ;; IMPORTANT: use t, not nil
+(global-set-key (kbd "C-.") #'my-activate-mark)
