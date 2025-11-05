@@ -17,4 +17,8 @@
 (global-set-key (kbd "C-c l") 'windmove-right)
 
 ;; on mac we have problem, need to overwrite it
-(global-set-key (kbd "C-.") 'set-mark-command)
+
+(defun my-set-mark ()
+  (interactive)
+  (set-mark-command nil))
+(global-set-key (kbd "C-.") #'my-set-mark)
