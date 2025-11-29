@@ -4,6 +4,15 @@
 
 ;;(set-fringe-mode 10)
 
+;; Add custom themes directory
+(add-to-list 'custom-theme-load-path
+             (expand-file-name "custom-themes" user-emacs-directory))
+
+;; Load the theme
+(load-theme 'compline t)
+
+
+
 (setq visible-bell t)
 
 (set-face-attribute 'default nil
@@ -15,7 +24,8 @@
 (use-package nord-theme
   :ensure t
   :config
-  (load-theme 'nord t))
+  ;;  (load-theme 'nord t)
+  )
 
 
 (show-paren-mode 1)

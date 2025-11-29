@@ -5,7 +5,7 @@
 (electric-pair-mode t)
 (setq             electric-pair-open-newline-between-pairs t)
 ;; C, Rust , Lisp , Haskell, ELixir/Erlang
-;; PHP, TS
+;; PHP, TS, Go, Zig
 ;; LSP Mode for multiple languages
 (use-package eglot
   :ensure t
@@ -107,6 +107,16 @@
   :ensure t
   :hook (go-mode . eglot-ensure))
 
+(use-package zig-mode
+  :ensure t
+  :hook ((zig-mode . eglot-ensure)
+         ))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(zig-mode . ("zls"))))
+
+
 ;; ----------------------------------------------------------
 ;; PHP LSP setup for Emacs (using Eglot + Intelephense)
 ;;
@@ -131,7 +141,7 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(php-mode . ("intelephense" "--stdio"))))
+	       '(php-mode . ("intelephense" "--stdio"))))
 
 ;; ===================================
 ;; Languages end here
