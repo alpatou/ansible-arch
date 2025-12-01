@@ -38,14 +38,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("0d35e890e7f51cd9818874f4185d9fa88701b11a83b12f2a7887942a27ffca17"
-     default))
  '(package-selected-packages
    '(company counsel-projectile dockerfile-mode elisp-format evil go-mode
-	     lsp-ui marginalia nord-theme orderless paredit php-mode
-	     projectile rainbow-delimiters rust-mode slime
-	     typescript-mode vertico yaml-mode))
+	     lsp-ui marginalia nord-theme nordic-night-theme orderless
+	     paredit php-mode projectile rainbow-delimiters rust-mode
+	     slime typescript-mode vertico yaml-mode))
  '(package-vc-selected-packages
    '((go-mode :url "https://github.com/dominikh/go-mode.el.git"))))
 (custom-set-faces

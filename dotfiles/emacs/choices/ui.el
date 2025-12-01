@@ -9,8 +9,7 @@
              (expand-file-name "custom-themes" user-emacs-directory))
 
 ;; Load the theme
-(load-theme 'compline t)
-
+;;(load-theme 'compline t)
 
 
 (setq visible-bell t)
@@ -26,6 +25,16 @@
   :config
   ;;  (load-theme 'nord t)
   )
+
+
+(use-package nordic-night-theme
+  :ensure t
+  :config
+
+  ;; Use this for the darker version
+  ;; (load-theme 'nordic-midnight t)
+
+  (load-theme 'nordic-night t))
 
 
 (show-paren-mode 1)
