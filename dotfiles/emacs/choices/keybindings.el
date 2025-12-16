@@ -22,10 +22,11 @@
   (if (bound-and-true-p evil-mode)
       (progn
         (evil-mode 0)
-        (message "Evil mode disabled"))
+        (message "🅥   Evil mode disabled 🅧 🅧 🅧    🅥  "))
     (evil-mode 1)
-    (message "Evil mode enabled")))
+    (message "🅥  Evil mode enabled  🅥  ")))
 
+(global-set-key (kbd "C-c C-v") 'toggle-evil-mode)
 
 (defun isearch-word-at-point ()
   "Start an incremental search forward with the word under cursor."
