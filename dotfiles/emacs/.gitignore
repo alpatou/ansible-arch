@@ -59,3 +59,8 @@ config.el
 custom.el
 
 recentf
+
+.lsp*
+CLAU*
+configuration.org
+history
