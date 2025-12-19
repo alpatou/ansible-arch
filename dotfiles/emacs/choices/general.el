@@ -4,18 +4,6 @@
 
 (setq inhibit-startup-message t)
 
-;; Load cua-base to make cua-mode available for Evil mode
-(require 'cua-base)
-
-(use-package evil
-  :ensure t
-  :config
-  (evil-mode 0))
-;; in case i want to delete the selected text on typing
-;;(use-package delsel
-;;  :ensure nil ; no need to install it as it is built-in
-;;  :hook (after-init . delete-selection-mode))
-
 
 ;; Automatically revert buffers when underlying files change externally
 (global-auto-revert-mode 1)

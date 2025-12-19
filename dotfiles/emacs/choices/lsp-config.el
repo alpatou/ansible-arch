@@ -48,100 +48,13 @@
 
 
 
-
-
-
-
-
-
 ;; ====================================
 ;; Languages here
 ;; ===================================
 
-(add-hook 'typescript-ts-mode-hook 'eglot-ensure)
-(add-hook 'tsx-ts-mode-hook 'eglot-ensure)
-
-(use-package elixir-mode
-  :ensure t
-  :hook (elixir-mode . eglot-ensure))
-
-(add-hook 'elixir-mode-hook 'eglot-ensure)
-
-(add-to-list 'eglot-server-programs '(elixir-mode "~/elixir-ls/language_server.sh"))
-
-(use-package typescript-mode
-  :ensure t
-  :mode ("\\.tsx?$" . typescript-mode))
-(use-package dockerfile-mode
-  :ensure t
-  :mode ("Dockerfile\\'" . dockerfile-mode))
-
-(use-package yaml-mode
-  :ensure t
-  :mode ("\\.ya?ml\\'" . yaml-mode))
-
-(add-to-list 'eglot-server-programs
-             '(dockerfile-mode . ("docker-langserver" "--stdio")))
-
-(setenv "YAML_CONFIG_FILE" (expand-file-name "~/.yaml.config.json"))
-
-(use-package python
-  :hook (python-mode . eglot-ensure))
-
-(use-package
-  elisp-format
-  :ensure t )
-
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
-
-(use-package
-  rust-mode
-  :vc (:url "https://github.com/rust-lang/rust-mode")
-  :ensure t
-  :hook (rust-mode . eglot-ensure))
-
-(use-package
-  go-mode
-  :vc (:url "https://github.com/dominikh/go-mode.el.git")
-  :ensure t
-  :hook (go-mode . eglot-ensure))
-
-(use-package zig-mode
-  :ensure t
-  :hook ((zig-mode . eglot-ensure)
-         ))
-
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(zig-mode . ("zls"))))
 
 
-;; ----------------------------------------------------------
-;; PHP LSP setup for Emacs (using Eglot + Intelephense)
-;;
-;; REQUIREMENTS (Pop!_OS / Ubuntu):
-;;     sudo apt install php-cli composer
-;;     sudo apt install nodejs npm
-;;     sudo npm install -g intelephense
-;;     M-x package-install RET php-mode RET
-;;     M-x package-install RET web-mode RET
-;;
-;; This config will:
-;;  - Start Eglot automatically when opening PHP files.
-;;  - Tell Eglot to use Intelephense for PHP buffers.
-;; ----------------------------------------------------------
 
-(use-package
-  php-mode
-  :ensure t
-  )
-
-(add-hook 'php-mode-hook 'eglot-ensure)
-
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-	       '(php-mode . ("intelephense" "--stdio"))))
 
 ;; ===================================
 ;; Languages end here

@@ -23,7 +23,7 @@
 (use-package nord-theme
   :ensure t
   :config
-  ;;  (load-theme 'nord t)
+;;    (load-theme 'nord t)
   )
 
 
@@ -34,7 +34,8 @@
   ;; Use this for the darker version
   ;; (load-theme 'nordic-midnight t)
 
-  (load-theme 'nordic-night t))
+  (load-theme 'nordic-night t)
+  )
 
 
 (show-paren-mode 1)
