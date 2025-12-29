@@ -18,3 +18,15 @@
 
 ;; Word wrap globally
 (global-visual-line-mode 1)
+
+
+
+;; Default input method (English = nil)
+(setq default-input-method "greek")
+
+;; Optional: start in English anyway
+(setq current-input-method nil)
+
+;; Make sure C-\ toggles input method
+;;(global-set-key (kbd "C-\\") #'toggle-input-method)
+

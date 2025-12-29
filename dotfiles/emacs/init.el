@@ -14,10 +14,10 @@
 (load "fuzzy-file-config.el")
 (load "terminal-config.el")
 (load "lsp-config.el")
+
 (load "programming-languages/typescript-config.el")
 (load "programming-languages/elixir-config.el")
 (load "programming-languages/common-lisp-config.el")
-
 (load "programming-languages/docker-config.el")
 (load "programming-languages/yaml-config.el")
 (load "programming-languages/c-rust-config.el")
