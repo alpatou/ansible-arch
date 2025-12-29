@@ -29,14 +29,35 @@
 
 (use-package nordic-night-theme
   :ensure t
-  :config
+;;  :config
 
   ;; Use this for the darker version
   ;; (load-theme 'nordic-midnight t)
 
-  (load-theme 'nordic-night t)
+;;  (load-theme 'nordic-night t)
   )
 
+
+
+;; =====
+;; Prot Themes
+;; =====
+
+
+(use-package ef-themes
+  :ensure t
+  :config
+  (load-theme 'ef-reverie :no-confirm)
+  )
+
+
+(use-package doric-themes
+  :ensure t)
+
+(use-package modus-themes
+  :ensure t
+ 
+  )
 
 (show-paren-mode 1)
 
