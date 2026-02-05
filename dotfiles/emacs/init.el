@@ -34,7 +34,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("96ec7dbdcc7b0ba7e69397854d11a136bc4d040acc38724042a092b4ccdc25e1"
+   '("a61cdb4ba78943b7e45f20265bcf72df553d0fb53344bb9299ba0a9e585c00b3"
+     "df46394d55355a6786362d2709228ec092e2e0c6b13e0720344ad1878646b56c"
+     "d2c76098def8b2b10b45d2092c86ca9c8b95d58fabbc8850d28899181d8f6581"
+     "19dfd2348c5c5fbf883f9cabc7ab5183c9bf0190c7d6ccbd49c7323d4424daea"
+     "49f934cfd7e032ec74b27b7dd89a5573279b3306c597b5511e2b5afebf5696a2"
+     "a8154615158cfa7533f050bbd1f4705cdbea386140a04988341a5a857799082e"
+     "5f9bca97ed63c4694b9b1336297c40b809284701f8012659adafb307e4bb42b5"
+     "43c23cd70b2ce81a1b48dc3973ff1a7c835f3f6ee49d3070236c2f068c2a819e"
+     "e939e1560ed06aaf2fc71f076705e6ea0d755910d0abdb9cd85871e9ae9effe8"
+     "f76876670af99c2ca9eedecc9bb7559166726800fa9774d9e9630293354f25a4"
+     "117f7dfb273bb39b83a228018ccffeb85ba0983c5d4a63155a5a48ad7f7c7c86"
+     "96ec7dbdcc7b0ba7e69397854d11a136bc4d040acc38724042a092b4ccdc25e1"
      "317f9fc9b30ce2d8064965f1a3cf8645ee3e8dc26dfcdc9f0e2ead337f37cac3"
      "488b82a8d9ace0aea8a6825db144e3c65c4f1ef3e090b618bf311d9cdb513322"
      "3656585faa5bd9925c0ee134b5eecf6d6a45ee2a2e81e633fa7a9a0659fdc095"
@@ -42,11 +53,11 @@
      "7e98dc1aa7f5db0557691da690c38d55e83ddd33c6d268205d66e430d57fb982"
      default))
  '(package-selected-packages
-   '(company dockerfile-mode doric-themes ef-themes elixir-mode evil
-	     go-mode helm-projectile lsp-ui modus-themes nord-theme
-	     nordic-night-theme paredit php-mode rainbow-delimiters
-	     rust-mode scad-mode slime typescript-mode vterm yaml-mode
-	     zig-mode))
+   '(company dockerfile-mode doric-themes ef-themes eglot elixir-mode
+	     evil go-mode helm-projectile lsp-ui modus-themes
+	     nord-theme nordic-night-theme paredit php-mode
+	     rainbow-delimiters rust-mode scad-mode slime
+	     typescript-mode vterm yaml-mode zig-mode))
  '(package-vc-selected-packages
    '((go-mode :url "https://github.com/dominikh/go-mode.el.git"))))
 (custom-set-faces
