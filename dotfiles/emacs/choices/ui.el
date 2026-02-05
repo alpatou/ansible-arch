@@ -46,8 +46,8 @@
 
 (use-package ef-themes
   :ensure t
-  :config
-  (load-theme 'ef-reverie :no-confirm)
+;;  :config
+;;  (load-theme 'ef-reverie :no-confirm)
   )
 
 
@@ -56,7 +56,8 @@
 
 (use-package modus-themes
   :ensure t
- 
+  :config
+  (load-theme 'tango-dark :no-confirm)
   )
 
 (show-paren-mode 1)
