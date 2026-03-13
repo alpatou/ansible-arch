@@ -57,8 +57,16 @@
 (use-package modus-themes
   :ensure t
   :config
-  (load-theme 'tango-dark :no-confirm)
+;;  (load-theme 'tango-dark :no-confirm)
   )
+
+(use-package alabaster-themes
+  :ensure t
+  :config
+  ;; Load the light theme
+  (load-theme 'alabaster-themes-light t)
+  ;; Interactively select a theme
+  :commands (alabaster-themes-select))
 
 (show-paren-mode 1)
 

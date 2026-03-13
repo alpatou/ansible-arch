@@ -34,7 +34,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("97e5f82e4e93c3a03fc823673d55cbb7e2c9cc27a6ac419b11c23ef4a2d0de26"
+   '("bbe58ef57bf5647a6c8f025f395b4440f05511c80b513e70b849c777518c81d3"
+     "59e54b18c77609cbfa88d1a9b48cb865e175fe1425f453dabec938d179f0ac0d"
+     "97e5f82e4e93c3a03fc823673d55cbb7e2c9cc27a6ac419b11c23ef4a2d0de26"
      "b61e6b8a20dde043f8bd49d8cfa126a86b7dcd85ce50ff71be41b78f38d6ae0b"
      "a61cdb4ba78943b7e45f20265bcf72df553d0fb53344bb9299ba0a9e585c00b3"
      "df46394d55355a6786362d2709228ec092e2e0c6b13e0720344ad1878646b56c"
@@ -54,7 +56,13 @@
      "6dcf1ca4c7432773084b9d52649ee5eb2c663131c4c06859f648dea98d9acb3e"
      "7e98dc1aa7f5db0557691da690c38d55e83ddd33c6d268205d66e430d57fb982"
      default))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(alabaster-themes company dockerfile-mode doric-themes ef-themes
+		      eglot elixir-mode evil go-mode helm-projectile
+		      lsp-ui nord-theme nordic-night-theme paredit
+		      php-mode rainbow-delimiters rust-mode scad-mode
+		      slime typescript-mode use-package vterm
+		      yaml-mode zig-mode))
  '(package-vc-selected-packages
    '((go-mode :url "https://github.com/dominikh/go-mode.el.git"))))
 (custom-set-faces
