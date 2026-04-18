@@ -9,7 +9,8 @@
 ;; LSP Mode for multiple languages
 (use-package eglot
   :ensure t
-  )
+  :config
+  (setq eglot-connect-timeout 120))
 
 (defun my-custom-format-before-save ()
   "Auto-format Emacs Lisp before saving."
