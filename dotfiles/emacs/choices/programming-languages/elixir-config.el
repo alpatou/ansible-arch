@@ -1,7 +1,12 @@
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
+
 (use-package elixir-mode
   :ensure t
-  :hook (elixir-mode . eglot-ensure))
-
-(add-hook 'elixir-mode-hook 'eglot-ensure)
-
-(add-to-list 'eglot-server-programs '(elixir-mode "~/elixir-ls/language_server.sh"))
+  :hook (elixir-mode . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+               `(elixir-mode ,(expand-file-name "~/elixir-ls/language_server.sh"))))
