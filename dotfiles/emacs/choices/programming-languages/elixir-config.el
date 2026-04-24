@@ -1,7 +1,7 @@
 (use-package elixir-mode
-  :ensure t)
+  :ensure t
+  :hook (elixir-mode . eglot-ensure))
 
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '((elixir-mode elixir-ts-mode heex-ts-mode)
-                 . ("~/lexical/_build/dev/package/lexical/bin/start_lexical.sh"))))
+(add-hook 'elixir-mode-hook 'eglot-ensure)
+
+(add-to-list 'eglot-server-programs '(elixir-mode "~/elixir-ls/language_server.sh"))
