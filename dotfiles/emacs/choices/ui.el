@@ -63,10 +63,11 @@
 (use-package alabaster-themes
   :ensure t
   :config
-  ;; Load the light theme
-  (load-theme 'alabaster-themes-light t)
-  ;; Interactively select a theme
   :commands (alabaster-themes-select))
+
+(if (display-graphic-p)
+    (load-theme 'alabaster-themes-light t)
+  (load-theme 'modus-operandi t))
 
 (show-paren-mode 1)
 
